@@ -18,7 +18,7 @@
 
     $dsn='mysql:dbname=shop;host=localhost;charset=utf8';
     $user='root';
-    $password='';
+    $password='root';
     $dbh=new PDO($dsn,$user,$password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
@@ -26,7 +26,7 @@
     $stmt=$dbh->prepare($sql);
     $data[]=$staff_name;
     $data[]=$staff_pass;
-    $stmt->exeute($data);
+    $stmt->execute($data);
 
     $dbh=null;
 
