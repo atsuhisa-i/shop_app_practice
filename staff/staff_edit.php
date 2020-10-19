@@ -26,7 +26,7 @@
     $stmt->execute($data);
 
     $rec=$stmt->fetch(PDO::FETCH_ASSOC);
-    $staff_name=$rec('name');
+    $staff_name=$rec['name'];
 
     $dbh=null;
 
@@ -56,6 +56,6 @@
   <input type="button" onclick="history.back()" value="戻る">
   <input type="submit" value="OK">
   </form>
-  
+
 </body>
 </html>
