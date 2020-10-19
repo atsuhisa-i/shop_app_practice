@@ -25,6 +25,26 @@
     $data[]=$staff_code;
     $stmt->execute($data);
 
+    $rec=$stmt->fetch(PDO::FETCH_ASSOC);
+    $staff_name=$rec('name');
+
+    $dbh=null;
+
   }
+  catch(Exception $e)
+  {
+    print'ただいま障害により大変ご迷惑をおかけしております。';
+    exit();
+  }
+
+  ?>
+
+  スタッフ修正<br/>
+  <?php print $staff_code;?>
+  <br/>
+  <br/>
+  <form method="post" action="staff_edit_check.php">
+  <input type="hidden" name="code" value="<?php print $staff_code;?>">
+  スタッフ名<br/>
 </body>
 </html>
