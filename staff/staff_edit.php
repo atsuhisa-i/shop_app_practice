@@ -40,6 +40,8 @@
   ?>
 
   スタッフ修正<br/>
+  <br/>
+  スタッフコード<br/>
   <?php print $staff_code;?>
   <br/>
   <br/>
