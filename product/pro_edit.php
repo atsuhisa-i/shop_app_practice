@@ -64,6 +64,8 @@
   価格<br/>
   <input type="text" name="price" style="width:50px" value="<?php print $pro_price;?>">円<br/>
   <br/>
+  <?php print $disp_gazou;?>
+  <br/>
   画像を選んでください。<br/>
   <input type="file" name="gazou" style="width:400px"><br/>
   <br/>
