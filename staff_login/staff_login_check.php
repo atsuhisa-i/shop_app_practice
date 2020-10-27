@@ -23,4 +23,24 @@ try
   $stmt->execute($data);
 
   $dbh=null;
+
+  $rec=$stmt->fetch(PDO::FETCH_ASSOC);
+
+  if($rec==false)
+  {
+    print'スタッフコードかパスワードが間違っています。<br/>';
+    print'<a href="staff_login.html">戻る</a>';
+  }
+  else
+  {
+    header('Location:staff_top.php');
+    exit();
+  }
 }
+catch(Exception $e)
+{
+  print'ただいま障害により大変ご迷惑をおかけしております。';
+  exit();
+}
+
+?>
