@@ -1,0 +1,57 @@
+<?php
+session_start();
+session_regenerate_id(true);
+if(isset($_SESSION['member_login'])==false)
+{
+
+  print'ようこそゲスト様。';
+  print'<a href="member_login.html">会員ログイン</a><br/>';
+  print'<br/>';
+}
+else
+{
+  print'ようこそ';
+  print $_SESSION['member_name'];
+  print '様　';
+  print '<a href="member_logout.php">ログアウト</a><br/>';
+  print '<br/>';
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <?php
+
+  try
+  {
+
+    $pro_code=$_GET['procode'];
+
+    if(isset($_SESSION['cart'])==true) //$_SESSIONの中に既に$cartのデータがあるときだけコピーするようにする
+    {
+      $cart=$_SESSION['cart']; //既にカートに入っている内容を$cartにコピーする
+    }
+    $cart[]=$pro_code;
+    $_SESSION['cart']=$cart;
+
+  }
+  catch(Exception $e)
+  {
+    print'ただいま障害により大変ご迷惑をおかけしております。';
+    exit();
+  }
+
+  ?>
+
+カートに追加しました。<br/>
+<br/>
+<a href="shop_list.php">商品一覧に戻る</a>
+
+</body>
+</html>
