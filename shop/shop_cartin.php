@@ -36,9 +36,12 @@ else
     if(isset($_SESSION['cart'])==true) //$_SESSIONの中に既に$cartのデータがあるときだけコピーするようにする
     {
       $cart=$_SESSION['cart']; //既にカートに入っている内容を$cartにコピーする
+      $kazu=$_SESSION['kazu'];
     }
     $cart[]=$pro_code;
+    $kazu[]=1;
     $_SESSION['cart']=$cart;
+    $_SESSION['kazu']=$kazu;
 
   }
   catch(Exception $e)
