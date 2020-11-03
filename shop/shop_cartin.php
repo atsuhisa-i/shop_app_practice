@@ -37,6 +37,12 @@ else
     {
       $cart=$_SESSION['cart']; //既にカートに入っている内容を$cartにコピーする
       $kazu=$_SESSION['kazu'];
+      if(in_array($pro_code,$cart)==true)
+      {
+        print 'その商品は既にカートに入っています。<br/>';
+        print '<a href="shop_list.php">商品一覧に戻る</a>';
+        exit();
+      }
     }
     $cart[]=$pro_code;
     $kazu[]=1;
