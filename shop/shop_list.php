@@ -55,7 +55,10 @@ else
       print'</a>';
       print '<br/>';
     }
-  
+    
+    print'<br/>';
+    print'<a href="shop_cartlook.php">カートを見る</a><br/>';
+    
   }
   catch(Exception $e)
   {
