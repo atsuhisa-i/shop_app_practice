@@ -82,7 +82,6 @@ else
       <?php print $pro_name[$i];?>
       <?php print $pro_gazou[$i];?>
       <?php print $pro_price[$i];?>円
-      <?php print $kazu[$i];?>
       <input type="text" name="kazu<?php print $i;?>" value="<?php print $kazu[$i];?>">
       <br/>
   <?php
