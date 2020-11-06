@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  session_regenerate_id(true);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +13,8 @@
   
   <?php
 
+  try
+  {
     require_once('../common/common.php');
 
     $post=sanitize($_POST);
@@ -27,8 +33,14 @@
     print $postal1.'-'.$postal2.'<br/>';
     print $address.'<br/>';
     print $tel.'<br/>';
+  }
+  catch(Exception $e)
+  {
+    print 'ただいま障害により大変ご迷惑をおかけしております。';
+    exit();
+  }
 
-    ?>
-    
+  ?>
+
 </body>
 </html>
