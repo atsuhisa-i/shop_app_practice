@@ -33,6 +33,38 @@
     print $postal1.'-'.$postal2.'<br/>';
     print $address.'<br/>';
     print $tel.'<br/>';
+
+    $honbun='';
+    $honbun.=$onamae."様\n\nこの度はご注文ありがとうございました。\n";
+    $honbun."\n";
+    $honbun.="ご注文商品\n";
+    $honbun.="------------\n";
+
+    $cart=$_SESSION['cart'];
+    $kazu=$_SESSION['kazu'];
+    $max=count($cart);
+
+    $dsn='mysql:dbname=shop;host=localhost;charset=utf8';
+    $user='root';
+    $password='root';
+    $dbh=new PDO($dsn, $user, $password);
+    $dbh->setAttribute(PDO::ATTR_ERRmode, PDO::ERRMODE_EXCEPTION);
+
+    for($i=0; $i<$max; $i++)
+    {
+      $sql='SELECT name,price FROM mst_product WHERE code=?';
+      $stmt=$dbh->prepare($sql);
+      $data[0]=$cart[$i];
+      $stmt->execute($data);
+
+      $rec=$stmt->fetch(PDO::FETCH_ASSOC);
+
+      $name=$rec['name'];
+      $price=$rec['price'];
+      $suryo=$kazu[$i];
+      $shokei=$price*$suryo;
+
+    }
   }
   catch(Exception $e)
   {
