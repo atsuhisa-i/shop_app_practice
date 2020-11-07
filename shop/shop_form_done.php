@@ -108,7 +108,7 @@
     $sql='UNLOCK TABLES';
     $stmt=$dbh->prepare($sql);
     $stmt->execute();
-    
+
     $dbh=null;
 
     $honbun.="送料は無料です。\n";
@@ -150,6 +150,9 @@
   }
 
   ?>
+
+<br/>
+<a href="shop_list.php">商品画面へ</a>
 
 </body>
 </html>
