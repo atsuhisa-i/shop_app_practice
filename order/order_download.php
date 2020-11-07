@@ -24,63 +24,17 @@ else
 </head>
 <body>
 
+  <?php
+  require_once('../common/common.php');
+  ?>
+
   ダウンロードしたい注文日を選んでください。<br/>
   <form method="post" action="order_download_done.php">
-    <select name="year">
-      <option value="2017">2017</option>
-      <option value="2018">2018</option>
-      <option value="2019">2019</option>
-      <option value="2020">2020</option>
-    </select>
+    <?php pulldown_year();?>
   年
-    <select name="month">
-      <option value="01">01</option>
-      <option value="02">02</option>
-      <option value="03">03</option>
-      <option value="04">04</option>
-      <option value="01">05</option>
-      <option value="02">06</option>
-      <option value="03">07</option>
-      <option value="04">08</option>
-      <option value="01">09</option>
-      <option value="02">10</option>
-      <option value="03">11</option>
-      <option value="04">12</option>
-    </select>
+    <?php pulldown_month();?>
   月
-    <select name="day">
-      <option value="01">01</option>
-      <option value="02">02</option>
-      <option value="03">03</option>
-      <option value="04">04</option>
-      <option value="01">05</option>
-      <option value="02">06</option>
-      <option value="03">07</option>
-      <option value="04">08</option>
-      <option value="01">09</option>
-      <option value="02">10</option>
-      <option value="03">11</option>
-      <option value="04">12</option>
-      <option value="01">13</option>
-      <option value="02">14</option>
-      <option value="03">15</option>
-      <option value="04">16</option>
-      <option value="01">17</option>
-      <option value="02">18</option>
-      <option value="03">19</option>
-      <option value="04">20</option>
-      <option value="01">21</option>
-      <option value="02">22</option>
-      <option value="03">23</option>
-      <option value="04">24</option>
-      <option value="01">25</option>
-      <option value="02">26</option>
-      <option value="03">27</option>
-      <option value="04">28</option>
-      <option value="01">29</option>
-      <option value="02">30</option>
-      <option value="03">31</option>
-    </select>
+    <?php pulldown_day();?>
   日<br/>
   <br/>
   <input type="submit" value="ダウンロードへ">
