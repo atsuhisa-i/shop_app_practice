@@ -70,6 +70,24 @@
       $honbun.=$shokei."円\n";
     }
 
+    $sql='INSERT INTO dat_sales(code_member,name,email,postal1,postal2,address,tel)VALUES(?,?,?,?,?,?,?)';
+    $stmt=$dbh->prepare($sql);
+    $data=array();
+    $data[]=0;
+    $data[]=$onamae;
+    $data[]=$email;
+    $data[]=$postal1;
+    $data[]=$postal2;
+    $data[]=$address;
+    $data[]=$tel;
+    $stmt->execute($data);
+
+    $sql='SELECT LAST_INSERT_ID()';
+    $stmt=$dbh->prepare($sql);
+    $stmt->execute();
+    $rec=$stmt->fetch(PDO::FETCH_ASSOC);
+    $lastcode=$rec['LAST_INSERT_ID()'];
+    
     $dbh=null;
 
     $honbun.="送料は無料です。\n";
@@ -102,7 +120,7 @@
     mb_language('Japanese');
     mb_internal_encoding('UTF-8');
     mb_send_mail('info@rokumarunouen.co.jp', $title, $honbun, $header);
-    
+
   }
   catch(Exception $e)
   {
