@@ -88,6 +88,14 @@
     $honbun.="-----------------------------------------\n";
     // print '<br/>';
     // print nl2br($honbun);
+
+    $title='ご注文ありがとうございます。';
+    $header='From:info@rokumarunouen.co.jp';
+    $honbun=html_entity_decode($honbun, ENT_QUOTES,'UTF-8');
+    mb_language('Japanese');
+    mb_internal_encoding('UTF-8');
+    mb_send_mail($email, $title, $honbun, $header);
+    
   }
   catch(Exception $e)
   {
