@@ -38,7 +38,7 @@
     $honbun.=$onamae."様\n\nこの度はご注文ありがとうございました。\n";
     $honbun."\n";
     $honbun.="ご注文商品\n";
-    $honbun.="------------\n";
+    $honbun.="---------------------------\n";
 
     $cart=$_SESSION['cart'];
     $kazu=$_SESSION['kazu'];
@@ -48,7 +48,7 @@
     $user='root';
     $password='root';
     $dbh=new PDO($dsn, $user, $password);
-    $dbh->setAttribute(PDO::ATTR_ERRmode, PDO::ERRMODE_EXCEPTION);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     for($i=0; $i<$max; $i++)
     {
@@ -64,7 +64,30 @@
       $suryo=$kazu[$i];
       $shokei=$price*$suryo;
 
+      $honbun.=$name.'';
+      $honbun.=$price.'円x';
+      $honbun.=$suryo.'個=';
+      $honbun.=$shokei."円\n";
     }
+
+    $dbh=null;
+
+    $honbun.="送料は無料です。\n";
+    $honbun.="---------------------------\n";
+    $honbun.="\n";
+    $honbun.="代金は以下の口座にお振込ください。\n";
+    $honbun.="ロクマル銀行　野菜支店　普通口座　1234567\n";
+    $honbun.="入金確認が取れ次第、梱包、発送させて頂きます。\n";
+    $honbun.="\n";
+    $honbun.="----------------------------------------\n";
+    $honbun.="　〜安心野菜のロクマル農園〜\n";
+    $honbun.="\n";
+    $honbun.="大阪府大阪市1234\n";
+    $honbun.="電話　090-1234-1234\n";
+    $honbun.="メール　info@rokumarunouen.co.jpn\n";
+    $honbun.="-----------------------------------------\n";
+    // print '<br/>';
+    // print nl2br($honbun);
   }
   catch(Exception $e)
   {
