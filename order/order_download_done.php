@@ -104,7 +104,13 @@ else
       $csv.="\n";
     }
 
-    print nl2br($csv);
+    // print nl2br($csv);
+
+    $file=fopen('./chumon/chumon.csv','w');
+    $csv=mb_convert_encoding($csv,'SJIS','UTF-8');
+    fputs($file,$csv);
+    fclose($file);
+
   }
   catch(Exception $e)
   {
@@ -114,6 +120,9 @@ else
 
   ?>
 
+  <a href="./chumon/chumon.csv">注文データのダウンロード</a><br/>
+  <br/>
+  <a href="order_download.php">日付選択へ</a><br/>
   <br/>
   <a href="../staff_login/staff_top.php">トップメニューへ</a><br/>
 
