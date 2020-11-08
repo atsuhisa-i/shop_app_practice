@@ -62,10 +62,49 @@ else
       AND substr(dat_sales.date,9,2)=?
     ';
     $stmt=$dbh->prepare($sql);
-    $stmt->execute();
+    $data[]=$year;
+    $data[]=$month;
+    $data[]=$day;
+    $stmt->execute($data);
 
     $dbh=null;
 
+    $csv='注文コード,注文日時,会員番号,お名前,メール,郵便番号,住所,TEL,商品コード,商品名,価格,数量';
+    $csv.="\n";
+    while(true)
+    {
+      $rec=$stmt->fetch(PDO::FETCH_ASSOC);
+      if($rec==false)
+      {
+      break;
+      }
+      $csv.=$rec['code'];
+      $csv.=',';
+      $csv.=$rec['date'];
+      $csv.=',';
+      $csv.=$rec['code_member'];
+      $csv.=',';
+      $csv.=$rec['dat_sales_name'];
+      $csv.=',';
+      $csv.=$rec['email'];
+      $csv.=',';
+      $csv.=$rec['postal1'].'-'.$rec['postal2'];
+      $csv.=',';
+      $csv.=$rec['address'];
+      $csv.=',';
+      $csv.=$rec['tel'];
+      $csv.=',';
+      $csv.=$rec['code_product'];
+      $csv.=',';
+      $csv.=$rec['mst_product_name'];
+      $csv.=',';
+      $csv.=$rec['price'];
+      $csv.=',';
+      $csv.=$rec['quantity'];
+      $csv.="\n";
+    }
+
+    print nl2br($csv);
   }
   catch(Exception $e)
   {
